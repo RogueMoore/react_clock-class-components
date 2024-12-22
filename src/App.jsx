@@ -57,7 +57,7 @@ export const AppOld = () => {
     <div className="App">
       <h1>React clock</h1>
 
-      <div ref={myClock} className="Clock">
+      <div className="Clock">
         <strong className="Clock__name">{clockName}</strong>
 
         {" time is "}

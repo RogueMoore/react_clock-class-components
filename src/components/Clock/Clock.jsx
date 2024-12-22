@@ -1,9 +1,16 @@
 import { Component } from "react";
 
 export class Clock extends Component {
-    state = {
-        today: new Date(),
-    }
+  state = {
+    today: new Date(),
+  };
+
+  componentDidMount() {
+    this.timerClockTime = window.setInterval(() => {
+      this.setState({ today: new Date() });
+      console.log(new Date().toUTCString().slice(-12, -4));
+    }, 1000);
+  }
 
   render() {
     return (
