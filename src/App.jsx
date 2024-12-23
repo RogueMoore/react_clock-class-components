@@ -27,7 +27,20 @@ export class App extends Component {
   componentDidMount() {
     document.addEventListener("contextmenu", this.rightClick);
     document.addEventListener("click", this.leftClick);
+
+    this.nameInterval = window.setInterval(() => {
+      this.updateClockName();
+    }, 3300);
   }
+
+  updateClockName = () => {
+    const oldName = this.state.clockName;
+    const newName = getRandomName();
+
+    this.setState({ clockName: newName });
+
+    console.log(`Renamed from ${oldName} to ${newName}`);
+  };
 
   render() {
     return (
@@ -35,7 +48,7 @@ export class App extends Component {
         <h1>React clock</h1>
 
         {/* Если hasClock === true, показываем Clock */}
-        {this.state.hasClock && <Clock name={this.state.clockName} />}
+        {this.state.hasClock && <Clock clockName={this.state.clockName} />}
       </div>
     );
   }
